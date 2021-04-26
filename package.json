@@ -1,0 +1,14 @@
+{
+  "name": "firstapp",
+  "version": "1.0.0",
+  "description": "trying new app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cloudy",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
