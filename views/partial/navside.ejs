@@ -1,0 +1,30 @@
+ <!-- SIDE NAVIGATION BAR -->
+ <div class="row">
+    <div class="nav-side  col-lg-2 col-sm-3" >
+        <nav class="navbar-expand-md navbar-light" id="sidebarMenu" style="background-color: #f8f9fa;">
+            <div class="justify-content-center" >
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav flex-column fs-6 mt-4 side-ul">
+                        <li class="nav-item">
+                            <a href="/" class="" >Dashboard</a>
+                        </li>
+                        <li class="nav-item"><a href="#" class="">Grades</a></li>
+                        <li class="nav-item">
+                            <a href="#" class=" pb-0">Class:</a>
+                        </li>
+                        <ul class="ms-3 class-ul">
+                            <% classList.forEach(clas => {%>
+                            <li class="nav-item">
+                                <a class="data-<%=clas._id%> py-1 px-0" href="/classPage/<%=clas._id%>" > <%= clas.className %> </a>
+                            </li>
+                            <% }); %> 
+                        </ul>
+                        <li class="nav-item">
+                            <a href="/inputClass" class=" pb-0"> Input Class</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- SIDE NAVBAR END -->

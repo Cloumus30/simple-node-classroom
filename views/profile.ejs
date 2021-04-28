@@ -1,0 +1,70 @@
+<%- include('./partial/header') %> 
+
+<%- include('./partial/navbar') %> 
+
+<%- include('./partial/navside') %>
+
+        <!-- KONTEN START -->
+        <div class="content-side  col-lg-10 col-sm-9" >
+            <h2 class="text-center my-3">Selamat Datang Cloudias</h2>
+            <h5 class="mt-5">A. BIODATA</h5>
+            <div class="text-center my-4">
+                <img src="/image/profil.png" alt="gambar profil" class="dashboard-image">
+            </div>
+
+            <table class="table table-bordered dashboard-table table-hover">
+                <tbody>
+                <tr>
+                    <th scope="row" class="text-break">NISN</th>
+                    <td class="text-break">1234567890</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-break">Nama</th>
+                    <td class="text-break">Cloudias Imani Pradana</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-break">Kelas</th>
+                    <td class="text-break">XI (Sebelas)</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="text-break">Alamat</th>
+                    <td class="text-break">Ds. Mana Kec. Sama Kab. Siapa-912873</td>
+                </tr>
+            </tbody>
+            </table>
+
+            <h5 class="mt-5">B. Daftar Kelas</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-break">No</th>
+                        <th class="text-break">Nama Kelas</th>
+                        <th class="text-break">Mata Pelajaran</th>
+                        <th class="text-break">Guru</th>
+                        <th class="text-break">jumlah Siswa</th>
+                        <th class="text-break">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let i =1; %> 
+                    <% classList.forEach(clas => {%> 
+                    <tr>
+                        <td><%= i %> </td>
+                        <td> <a href="/classPage/<%=clas._id%>"><%= clas.className %></a></td>
+                        <td> <%= clas.lesson %> </td>
+                        <td> <%= clas.teacher %> </td>
+                        <td> <%= clas.studentsNum %> </td>
+                        <td>
+                            <a href="/update-class/<%=clas._id%>" class="btn btn-primary update-class">Edit</a>
+                            <button id="<%= clas._id %>" class="btn btn-danger delete-class">Delete</button>
+                        </td>
+                    </tr>
+                    <% i++; }); %> 
+                </tbody>
+            </table>
+        </div>
+        <!-- KONTEN END -->
+    </div>
+
+    <script src="profilePageScript.js"></script>
+<%- include('./partial/footer') %> 

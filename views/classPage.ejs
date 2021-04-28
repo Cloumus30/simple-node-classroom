@@ -1,0 +1,104 @@
+<%- include('./partial/header') %> 
+
+<%- include('./partial/navbar') %> 
+
+<%- include('./partial/navside') %> 
+
+<div class="content-side  col-lg-10 col-sm-9" >
+    <h2 class="text-center title" id="<%= classDetail._id%> "><%= classDetail.className %></h2>
+    <div class="row">
+        <div class="col-3">
+            <form action="#">
+                    <div class="input-group">
+                        <input type="text" placeholder="search" name="search" 
+                        class="form-control">
+                        <button class="btn btn-secondary">search</button>
+                    </div>
+            </form>
+        </div>
+        <div class="col-9 text-end">
+            <button type="button" class="btn btn-success py-0 text-center me-4" data-bs-toggle="modal" data-bs-target="#inputStudentModal"><span class="font-symbol">&#43; </span>Tambah Siswa</button>
+        </div>
+    </div>
+    <div class="row text-center">
+        <div class="col-12 mx-auto">
+            <table class="table table-bordered my-4 ">
+                <thead>
+                    <tr>
+                        <th class="text-break">No</th>
+                        <th class="text-break">Nama</th>
+                        <th class="text-break">NISN</th>
+                        <th class="text-break">status</th>
+                        <th class="text-break">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="dataParent">
+                    <% if (studentData) { %> 
+                        <% let i=1; %> 
+                        <% studentData.forEach(student => { %> 
+                            <tr>
+                                <td><%= i %> </td>
+                                <td><%= student.name %></td>
+                                <td><%= student.nisn %></td>
+                                <td><%= student.status %></td>
+                                <td class="action-table">
+                                    <button data-id-update="<%=student._id%> " class="btn btn-primary btn-update" data-bs-toggle="modal" data-bs-target="#updateStudentModal">Edit</button>
+                                    <button id="<%=student._id%>" type="button" class="btn btn-danger btn-delete">Delete</button>
+                                </td>
+                            </tr>
+                        <% i++ }); %> 
+                    <% } %> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Input -->
+<div class="modal fade" id="inputStudentModal" tabindex="-1" aria-labelledby="inputStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Input Student</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="">
+                <div class="modal-body">
+                    <input type="text" class="form-control mb-3" placeholder="Nama" name="name">
+                    <input type="text" class="form-control mb-3" placeholder="NISN" name="nisn">
+                    <input type="text" class="form-control mb-3" placeholder="Status" name="status">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary submit-student">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Update -->
+<div class="modal fade" id="updateStudentModal" tabindex="-1" aria-labelledby="updateStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateStudentModalLabel">Update Data Student</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="">
+                <div class="modal-body">
+                    <input id="nameUpdate" type="text" class="form-control mb-3" placeholder="Nama" name="name">
+                    <input id="nisnUpdate" type="text" class="form-control mb-3" placeholder="NISN" name="nisn">
+                    <input id="statusUpdate" type="text" class="form-control mb-3" placeholder="Status" name="status">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary update-student">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="classPageScript.js"></script>
+<%- include('./partial/footer') %> 

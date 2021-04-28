@@ -1,0 +1,87 @@
+<%- include('./partial/header') %> 
+<%- include('./partial/navbar') %> 
+<%- include('./partial/navside') %>
+<div class="content-side col-lg-10 col-sm-9" >
+    <% if (locals.classData) { %> 
+        <!-- Update Class Data -->
+    <h2 class="text-center my-3 mb-4">Update <%= classData.className %> </h2>
+    <form action="/update-class?_method=PUT" method="POST">
+        <input type="text" hidden name="id" value="<%= classData._id %> ">
+        <div class="row row-cols-4">
+            <div class="col"></div>
+            <div class="col-6">
+                <div class="row mb-3">
+                    <label for="Class" class="form-label col-3">Class Name</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="class" id="Class" value="<%= classData.className %>">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="Lesson" class="form-label col-3">Lesson</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="lesson" id="Lesson" value="<%= classData.lesson %>">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="studentNum" class="form-label col-3">Student Number</label>
+                    <div class="col-4">
+                        <input class="form-control" type="number" name="studentNum" id="studentNum" value="<%= classData.studentsNum %>">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="teacher" class="form-label col-3">Teacher Name</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="teacher" id="teacher" value="<%= classData.teacher %>">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </form>
+
+    <% } else { %> 
+
+        <!-- Input Class Data -->
+        <h2 class="text-center my-3 mb-4">Form Input Class </h2>
+    <form action="/inputClass" method="POST">
+        <div class="row row-cols-4">
+            <div class="col"></div>
+            <div class="col-6">
+                <div class="row mb-3">
+                    <label for="Class" class="form-label col-3">Class Name</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="class" id="Class" >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="Lesson" class="form-label col-3">Lesson</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="lesson" id="Lesson" >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="studentNum" class="form-label col-3">Student Number</label>
+                    <div class="col-4">
+                        <input class="form-control" type="number" name="studentNum" id="studentNum" >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label for="teacher" class="form-label col-3">Teacher Name</label>
+                    <div class="col-9">
+                        <input class="form-control" type="text" name="teacher" id="teacher" >
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </form>
+    <% } %> 
+</div>
+
+<%- include('./partial/footer') %> 
