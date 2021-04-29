@@ -12,7 +12,7 @@ const Student = require('./Model/Student');
 const ClassRouters = require('./routers/classRoutes');
 const StudentRouters = require('./routers/studentRoutes');
 
-const con = 'mongodb://localhost:27017/newDB';
+const con = 'mongodb+srv://Ciel:Ciel17092000@latihan.yp8qn.mongodb.net/ClassroomDB?retryWrites=true&w=majority';
 mongoose.connect(con,{useNewUrlParser: true, useUnifiedTopology: true})
     .then(()=>{
         app.listen(port,()=>{
