@@ -1,2 +1,19 @@
+<script>
+    function mediaQueries(x) {
+        if (x.matches) { // If media query matches
+            const navside = document.getElementById('navbarSupportedContent');
+            navside.classList.add('collapse');
+            navside.classList.add('navbar-collapse');
+        } else {
+            const navside = document.getElementById('navbarSupportedContent');
+            navside.classList.remove('collapse');
+            navside.classList.remove('navbar-collapse');
+        }
+    }
+
+    let x = window.matchMedia("(max-width: 480px)");
+    mediaQueries(x); // Call listener function at run time
+    x.addListener(mediaQueries); // Attach listener function on state changes
+</script>
 </body>
 </html>
