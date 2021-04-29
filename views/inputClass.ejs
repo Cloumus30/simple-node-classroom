@@ -13,13 +13,19 @@
                 <div class="row mb-3">
                     <label for="Class" class="form-label col-3">Class Name</label>
                     <div class="col-9">
-                        <input class="form-control" type="text" name="class" id="Class" value="<%= classData.className %>">
+                        <input class="form-control" type="text" name="class" id="class" value="<%= classData.className %>">
+                    </div>
+                    <div class="custom-valid mb-3" id="className-valid">
+                        <!-- Default Error -->
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="Lesson" class="form-label col-3">Lesson</label>
                     <div class="col-9">
-                        <input class="form-control" type="text" name="lesson" id="Lesson" value="<%= classData.lesson %>">
+                        <input class="form-control" type="text" name="lesson" id="lesson" value="<%= classData.lesson %>">
+                    </div>
+                    <div class="custom-valid mb-3" id="lesson-valid">
+                        <!-- Default Error -->
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -27,15 +33,21 @@
                     <div class="col-4">
                         <input class="form-control" type="number" name="studentNum" id="studentNum" value="<%= classData.studentsNum %>">
                     </div>
+                    <div class="custom-valid mb-3" id="studentsNum-valid">
+                        <!-- Default Error -->
+                    </div>
                 </div>
                 <div class="row mb-3">
                     <label for="teacher" class="form-label col-3">Teacher Name</label>
                     <div class="col-9">
                         <input class="form-control" type="text" name="teacher" id="teacher" value="<%= classData.teacher %>">
                     </div>
+                    <div class="custom-valid mb-3" id="teacher-valid">
+                        <!-- Default Error -->
+                    </div>
                 </div>
                 <div class="row mb-3">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-success class-update">Submit</button>
                 </div>
             </div>
             <div class="col"></div>
@@ -53,13 +65,19 @@
                 <div class="row mb-3">
                     <label for="Class" class="form-label col-3">Class Name</label>
                     <div class="col-9">
-                        <input class="form-control" type="text" name="class" id="Class" >
+                        <input class="form-control" type="text" name="class" id="class" >
+                    </div>
+                    <div class="custom-valid mb-3" id="className-valid">
+                        <!-- Default Error -->
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label for="Lesson" class="form-label col-3">Lesson</label>
                     <div class="col-9">
-                        <input class="form-control" type="text" name="lesson" id="Lesson" >
+                        <input class="form-control" type="text" name="lesson" id="lesson" >
+                    </div>
+                    <div class="custom-valid mb-3" id="lesson-valid">
+                        <!-- Default Error -->
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -67,15 +85,21 @@
                     <div class="col-4">
                         <input class="form-control" type="number" name="studentNum" id="studentNum" >
                     </div>
+                    <div class="custom-valid mb-3" id="studentsNum-valid">
+                        <!-- Default Error -->
+                    </div>
                 </div>
                 <div class="row mb-3">
                     <label for="teacher" class="form-label col-3">Teacher Name</label>
                     <div class="col-9">
                         <input class="form-control" type="text" name="teacher" id="teacher" >
                     </div>
+                    <div class="custom-valid mb-3" id="teacher-valid">
+                        <!-- Default Error -->
+                    </div>
                 </div>
                 <div class="row mb-3">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    <button type="submit" class="btn btn-success class-submit">Submit</button>
                 </div>
             </div>
             <div class="col"></div>
@@ -83,5 +107,7 @@
     </form>
     <% } %> 
 </div>
+
+<script src="inputClassScript.js"></script>
 
 <%- include('./partial/footer') %> 

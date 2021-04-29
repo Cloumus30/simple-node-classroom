@@ -4,7 +4,7 @@ const port = 3000;
 const mongoose = require('mongoose');
 const path = require('path');
 const methodOverride = require('method-override');
-const objectId = require('mongodb').ObjectID;
+const {body,validationResult} = require('express-validator');
 const ClassObj = require('./Model/Class');
 const Student = require('./Model/Student');
 
@@ -26,6 +26,8 @@ app.use(express.urlencoded());
 app.use(express.json());
 // override with POST having ?_method=
 app.use(methodOverride('_method'))
+
+mongoose.set('useFindAndModify',false);
 
 app.get('/',async (req,res)=>{
     const classList = await ClassObj.find();
@@ -51,30 +53,33 @@ app.get('/classPage/:id',async (req,res)=>{
     } 
 });
 
-app.post('/inputClass',(req,res)=>{
+app.post('/inputClass',
+//Validation with express-validator
+body('className').isLength({min:1}).withMessage('class is required'),
+body('teacher').isLength({min:1}).withMessage('teacher is required'),
+body('studentsNum').isInt({min:1}).withMessage('Must Num and required'),
+body('lesson').isLength({min:1}).withMessage('lesson is required'),
+(req,res)=>{
+    const errors = validationResult(req);
+    console.log(req.body);
+    // Check if there are errors
+    if (!errors.isEmpty()) {
+        // Send errors to the client
+        return res.json({ errors: errors.array() });
+    }
+
     const request = req.body;
     // console.log(request);
+    // Saving New Class Data to DB
     const newClass = new ClassObj({
-        className:request.class,
+        className:request.className,
         teacher: request.teacher,
-        studentsNum: request.studentNum
+        studentsNum: request.studentsNum,
+        lesson:request.lesson
     });
     newClass.save();
-    res.redirect('back');
+    res.json({status:'oke'});
 });
-
-app.post('/inputStudent', (req,res)=>{
-    const request = req.body;
-        const newStudent = new Student({
-            name:request.name,
-            nisn:request.nisn,
-            status:request.status,
-            idClass:request.idClass
-        })
-        newStudent.save()
-        .then(result=>res.send(newStudent))
-        .catch(err=>res.send(err));
-})
 
 // Go To Update Form Page
 app.get('/update-class/:id',async (req,res)=>{
@@ -85,20 +90,36 @@ app.get('/update-class/:id',async (req,res)=>{
 });
 
 // Save the Update Class
-app.put('/update-class',(req,res)=>{
+app.put('/update-class',
+//Validation with express-validator
+body('className').isLength({min:1}).withMessage('class is required'),
+body('teacher').isLength({min:1}).withMessage('teacher is required'),
+body('studentsNum').isInt({min:1}).withMessage('Must Num and required'),
+body('lesson').isLength({min:1}).withMessage('lesson is required'),
+(req,res)=>{
     // res.send(req.body);
+    // console.log(req.body);
+    const errors = validationResult(req);
+    // console.log(req.body);
+    // Check if there are errors
+    if (!errors.isEmpty()) {
+        // Send errors to the client
+        // console.log(errors.array());
+        return res.json({ errors: errors.array() });
+    }
+
     const request = req.body;
     const id = req.body.id.trim();
     const data = {
-        className: request.class,
+        className: request.className,
         lesson: request.lesson,
-        studentsNum: request.studentNum,
+        studentsNum: request.studentsNum,
         teacher:request.teacher
     };
-    ClassObj.findByIdAndUpdate(id,data)
+    ClassObj.findByIdAndUpdate(id,data,{runValidators:true})
         .then(response => {
             // console.log(`update: ${response}`);
-            res.redirect('/');
+            res.send(response);
     })
         .catch(err => res.send(`can not update ${err}`));
 });
@@ -111,6 +132,23 @@ app.delete('/delete-class',async (req,res)=>{
     response.class = await ClassObj.findByIdAndDelete(classId);
     res.send(response);
 });
+
+app.post('/inputStudent', (req,res)=>{
+    const request = req.body;
+        const newStudent = new Student({
+            name:request.name,
+            nisn:request.nisn,
+            status:request.status,
+            idClass:request.idClass
+        })
+        newStudent.save()
+        .then(result=>{
+            res.send(newStudent)
+        })
+        .catch(err=>{
+            res.send(err);
+        });
+})
 
 app.delete('/delete-student',(req,res)=>{
     Student.findByIdAndDelete(req.body.id)
@@ -136,12 +174,11 @@ app.put('/update-student/save',(req,res)=>{
         nisn:req.body.nisn,
         status:req.body.status
     };
-    Student.findByIdAndUpdate(id,data)
+    Student.findByIdAndUpdate(id,data,{runValidators:true})
         .then(result=> {
             res.send(result);
         })
         .catch(err=>{
-            console.log(err);
             res.send(err);
         })
 });

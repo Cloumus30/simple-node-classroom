@@ -64,9 +64,18 @@
             </div>
             <form action="">
                 <div class="modal-body">
-                    <input type="text" class="form-control mb-3" placeholder="Nama" name="name">
-                    <input type="text" class="form-control mb-3" placeholder="NISN" name="nisn">
-                    <input type="text" class="form-control mb-3" placeholder="Status" name="status">
+                    <input type="text" class="form-control" placeholder="Nama" name="name" aria-describedby="name-invalid-feedback" required>
+                    <div class="custom-valid mb-3" id="name-input-valid">
+                        <!-- Default Error -->
+                    </div>
+                    <input type="text" class="form-control" placeholder="NISN" name="nisn" id="name-input" aria-describedby="nisn-invalid-feedback" required>
+                    <div class="custom-valid mb-3" id="nisn-input-valid">
+                        <!-- Default Error -->
+                    </div>
+                    <input type="text" class="form-control" placeholder="Status" name="status" aria-describedby="status-invalid-feedback" required>
+                    <div class="custom-valid mb-3" id="status-input-valid">
+                        <!-- Default Error -->
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -87,9 +96,18 @@
             </div>
             <form action="">
                 <div class="modal-body">
-                    <input id="nameUpdate" type="text" class="form-control mb-3" placeholder="Nama" name="name">
-                    <input id="nisnUpdate" type="text" class="form-control mb-3" placeholder="NISN" name="nisn">
-                    <input id="statusUpdate" type="text" class="form-control mb-3" placeholder="Status" name="status">
+                    <input id="nameUpdate" type="text" class="form-control mb-3" placeholder="Nama" name="name" required>
+                    <div class="custom-valid mb-3" id="name-update-valid">
+                        <!-- Default Error -->
+                    </div>
+                    <input id="nisnUpdate" type="text" class="form-control mb-3" placeholder="NISN" name="nisn" required>
+                    <div class="custom-valid mb-3" id="nisn-update-valid">
+                        <!-- Default Error -->
+                    </div>
+                    <input id="statusUpdate" type="text" class="form-control mb-3" placeholder="Status" name="status" required>
+                    <div class="custom-valid mb-3" id="status-update-valid">
+                        <!-- Default Error -->
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

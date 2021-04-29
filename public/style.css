@@ -46,3 +46,11 @@ table{
 .font-symbol{
     font-size: x-large;
 }
+
+.active{
+    background-color: rgba(196, 199, 199, 0.527);
+}
+
+.custom-valid{
+    color: red;
+}

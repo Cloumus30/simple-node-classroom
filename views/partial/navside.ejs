@@ -10,13 +10,29 @@
                         </li>
                         <li class="nav-item"><a href="#" class="">Grades</a></li>
                         <li class="nav-item">
-                            <a href="#" class=" pb-0">Class:</a>
+                            <a href="#" class=" pb-0">Class: </a>
                         </li>
                         <ul class="ms-3 class-ul">
                             <% classList.forEach(clas => {%>
-                            <li class="nav-item">
-                                <a class="data-<%=clas._id%> py-1 px-0" href="/classPage/<%=clas._id%>" > <%= clas.className %> </a>
-                            </li>
+                                <!-- Check Exist ClassDetail -->
+                                <% if (locals.classDetail){ %>
+                                    <!-- If Class page active -->
+                                    <% if (classDetail.className == clas.className) {%> 
+                                        <li class="nav-item active">
+                                            <a class="data-<%=clas._id%> py-1 px-0" href="/classPage/<%=clas._id%>"> <%= clas.className %> </a>
+                                        </li>
+                                    <% } else{ %> 
+                                        <!-- If Class Page not Active -->
+                                        <li class="nav-item">
+                                            <a class="data-<%=clas._id%> py-1 px-0" href="/classPage/<%=clas._id%>"> <%= clas.className %></a>
+                                        </li>
+                                    <% } %> 
+                                <% } else { %> 
+                                    <!-- If ClassDetail does not exist -->
+                                <li class="nav-item">
+                                    <a class="data-<%=clas._id%> py-1 px-0" href="/classPage/<%=clas._id%>"> <%= clas.className %> </a>
+                                </li>
+                                <% } %> 
                             <% }); %> 
                         </ul>
                         <li class="nav-item">
