@@ -46,13 +46,13 @@ function validateError(err,query){
         Object.values(err).forEach((er)=>{
             // console.log(er);
             if(er.kind=='Number'){
-                errors[er.path]='nisn Must be Number';
+                errors[er.path]='NISN Harus Berupa Angka';
             }else{
                 errors[er.path]=er.message;
             }
         });
     }else if((query=='noNumber') && (err.kind) ){ //for update validation that nisn is string
-        errors.nisn='nisn Must be Number';
+        errors.nisn='NISN Harus Berupa Angka';
     }
     return errors;   
 }

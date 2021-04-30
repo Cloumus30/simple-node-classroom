@@ -4,7 +4,7 @@ document.addEventListener('click',e=>{
         // Delete The Data
         const id = e.target.getAttribute('id');
         const data = {id:id};
-        if(confirm('Deleting Class is delete all the students too, delete Class?')){
+        if(confirm('Menghapus Kelas Berarti Menghapus Data Murid, Hapus Kelas?')){
             customFetch('/delete-class','DELETE',data)
             .then(res=>{
                 deleting(id);

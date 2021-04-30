@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 const studentSchema = new mongoose.Schema({
     name:{
         type:String,
-        required:[true,"requiring Name"]
+        required:[true,"Nama Harus Diisi"]
     },
     nisn:{
         type:Number,
-        required:[true,"nisn Must be filled"],
+        required:[true,"NISN Harus Diisi"],
     },
     status:{
         type:String,
-        required:[true,"status must be filled"]
+        required:[true,"Status Harus Diisi"]
     },
     idClass:{
         type:String,

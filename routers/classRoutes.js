@@ -10,10 +10,10 @@ router.get('/classPage/:id',classController.show);
 
 router.post('/inputClass',
 //Validation with express-validator
-body('className').isLength({min:1}).withMessage('class is required'),
-body('teacher').isLength({min:1}).withMessage('teacher is required'),
-body('studentsNum').isInt({min:1}).withMessage('Must Num and required'),
-body('lesson').isLength({min:1}).withMessage('lesson is required'),
+body('className').isLength({min:1}).withMessage('Kelas Harus Diisi'),
+body('teacher').isLength({min:1}).withMessage('Nama Guru Harus Diisi'),
+body('studentsNum').isInt({min:1}).withMessage('Jumlah Murid Harus Diisi'),
+body('lesson').isLength({min:1}).withMessage('Mata Pelajaran Harus Diisi'),
 // Controller
 classController.save);
 
@@ -23,10 +23,10 @@ router.get('/update-class/:id',classController.edit);
 // Save the Update Class
 router.put('/update-class',
 //Validation with express-validator
-body('className').isLength({min:1}).withMessage('class is required'),
-body('teacher').isLength({min:1}).withMessage('teacher is required'),
-body('studentsNum').isInt({min:1}).withMessage('Must Num and required'),
-body('lesson').isLength({min:1}).withMessage('lesson is required'),
+body('className').isLength({min:1}).withMessage('Kelas Harus Diisi'),
+body('teacher').isLength({min:1}).withMessage('Nama Guru Harus Diisi'),
+body('studentsNum').isInt({min:1}).withMessage('Jumlah Murid Harus Diisi'),
+body('lesson').isLength({min:1}).withMessage('Mata Pelajaran Harus Diisi'),
 // Controller
 classController.update);
 

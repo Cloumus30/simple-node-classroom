@@ -3,19 +3,19 @@ const mongoose = require('mongoose');
 const ClassSchema = new mongoose.Schema({
     className:{
         type:String,
-        required:[true,'Class must be filled']
+        required:[true,'Kelas harus Diisi']
     },
     lesson:{
         type:String,
-        required:[true,'Lesson must be filled']
+        required:[true,'Mata Pelajaran Harus Diisi']
     },
     teacher:{
         type:String,
-        required:[true,'Teacher must be filled']
+        required:[true,'Nama Guru Harus Diisi']
     },
     studentsNum: {
         type:Number,
-        required:[true,'Student Number must be filled']
+        required:[true,'Jumlah Murid Harus Diisi']
     },
 },{timestamps:true});
 
