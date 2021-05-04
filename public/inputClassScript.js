@@ -17,10 +17,14 @@ document.addEventListener('click',e=>{
         customFetch('/inputClass','POST',data)
             .then(response=>{
                 if (response.errors){
-
+                    // console.log(response.errors);
                     return ShowValidateError(response.errors);
                 }
-                return location.reload();
+                const contentSide = document.querySelector('.content-side');
+                addAlert(contentSide,"Data Kelas Berhasil Disimpan");
+                setTimeout(location.reload(),3000);
+                // return location.reload();
+                // console.log(response);
             })
             .catch(err=>{
                 console.log(err);
@@ -47,7 +51,7 @@ document.addEventListener('click',e=>{
         customFetch('/update-class?_method=PUT','POST',data)
             .then(response=>{
                 if (response.errors){
-                    // console.log(response);
+                    // console.log(response.errors);
                     return ShowValidateError(response.errors);
                 }
                 // console.log(response);
@@ -90,3 +94,10 @@ async function customFetch(route,method,data){
     const response = await result.json();
     return response;
 };
+
+function addAlert(element,message){
+    const html =`<div class="alert alert-success" role="alert">
+    ${message}
+    </div>`
+    element.insertAdjacentHTML('afterbegin',html);
+}

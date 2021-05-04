@@ -8,8 +8,8 @@
     <form action="/update-class?_method=PUT" method="POST">
         <input type="text" hidden name="id" value="<%= classData._id %> ">
         <div class="row row-cols-4">
-            <div class="col"></div>
-            <div class="col-6">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 col-sm-12 mx-4">
                 <div class="row mb-3">
                     <label for="Class" class="form-label col-3">Nama Kelas</label>
                     <div class="col-9">
@@ -50,7 +50,7 @@
                     <button type="submit" class="btn btn-success class-update">Perbarui</button>
                 </div>
             </div>
-            <div class="col"></div>
+            <div class="col-lg-2"></div>
         </div>
     </form>
 
@@ -58,53 +58,53 @@
 
         <!-- Input Class Data -->
         <h2 class="text-center my-3 mb-4">Form Input Kelas</h2>
-    <form action="/inputClass" method="POST">
-        <div class="row row-cols-4">
-            <div class="col"></div>
-            <div class="col-6">
-                <div class="row mb-3">
-                    <label for="Class" class="form-label col-3">Nama Kelas</label>
-                    <div class="col-9">
-                        <input class="form-control" type="text" name="class" id="class" >
+        <form action="/inputClass" method="POST">
+            <div class="row">
+                <div class=" col-lg-2"></div>
+                <div class="col-lg-8 col-sm-12 mx-4">
+                    <div class="row mb-3">
+                        <label for="Class" class="form-label col-3">Nama Kelas</label>
+                        <div class="col-9">
+                            <input class="form-control" type="text" name="class" id="class" >
+                        </div>
+                        <div class="custom-valid mb-3" id="className-valid">
+                            <!-- Default Error -->
+                        </div>
                     </div>
-                    <div class="custom-valid mb-3" id="className-valid">
-                        <!-- Default Error -->
+                    <div class="row mb-3">
+                        <label for="Lesson" class="form-label col-3">Mata Pelajaran</label>
+                        <div class="col-9">
+                            <input class="form-control" type="text" name="lesson" id="lesson" >
+                        </div>
+                        <div class="custom-valid mb-3" id="lesson-valid">
+                            <!-- Default Error -->
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="studentNum" class="form-label col-3">Jumlah Murid</label>
+                        <div class="col-4">
+                            <input class="form-control" type="number" name="studentNum" id="studentNum" >
+                        </div>
+                        <div class="custom-valid mb-3" id="studentsNum-valid">
+                            <!-- Default Error -->
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="teacher" class="form-label col-3">Nama Guru</label>
+                        <div class="col-9">
+                            <input class="form-control" type="text" name="teacher" id="teacher" >
+                        </div>
+                        <div class="custom-valid mb-3" id="teacher-valid">
+                            <!-- Default Error -->
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <button type="submit" class="btn btn-success class-submit">Masukkan</button>
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <label for="Lesson" class="form-label col-3">Mata Pelajaran</label>
-                    <div class="col-9">
-                        <input class="form-control" type="text" name="lesson" id="lesson" >
-                    </div>
-                    <div class="custom-valid mb-3" id="lesson-valid">
-                        <!-- Default Error -->
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="studentNum" class="form-label col-3">Jumlah Murid</label>
-                    <div class="col-4">
-                        <input class="form-control" type="number" name="studentNum" id="studentNum" >
-                    </div>
-                    <div class="custom-valid mb-3" id="studentsNum-valid">
-                        <!-- Default Error -->
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label for="teacher" class="form-label col-3">Nama Guru</label>
-                    <div class="col-9">
-                        <input class="form-control" type="text" name="teacher" id="teacher" >
-                    </div>
-                    <div class="custom-valid mb-3" id="teacher-valid">
-                        <!-- Default Error -->
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <button type="submit" class="btn btn-success class-submit">Masukkan</button>
-                </div>
+                <div class=" col-lg-2"></div>
             </div>
-            <div class="col"></div>
-        </div>
-    </form>
+        </form>
     <% } %> 
 </div>
 
